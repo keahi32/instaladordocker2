@@ -6,9 +6,7 @@ logs=/var/log/snort/alert
 message=/tmp/message.txt
 
 #Chat id and bot telegram token
-echo "Dime tu chat ID"
-read id
-chat_id="$id"
+chat_id="692557566"
 token="6072331456:AAHndQClwpdyLXKnDIncbExw3NItXF6ZXk0"
 
 #Send Alert Function
