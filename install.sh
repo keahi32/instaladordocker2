@@ -129,9 +129,9 @@ echo "-------------------------------"
 sudo apt install mariadb-server -y &>/dev/null
 clear
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sql-maria >ip.txt
-jamon=$(cat /var/www/html/instaladordocker/ip.txt)
+jamon=$(cat /var/www/html/instaladordocker2/ip.txt)
 git clone https://github.com/keahi32/basededatos &>/dev/null
-mysql -u root -h $jamon -p docker < /var/www/html/instaladordocker/basededatos/docker.sql 
+mysql -u root -h $jamon -p docker < /var/www/html/instaladordocker2/basededatos/docker.sql 
 echo " "
 echo "-------------------------------"
 echo " "
@@ -172,11 +172,13 @@ mv telegram.sh /home/admin/telegram/
 mv local.rules /etc/snort/rules
 read -p "Dime la ip de eth0: " HOME_NET
 sudo sed -i "s|ipvar HOME_NET any|ipvar HOME_NET $HOME_NET|g" /etc/snort/snort.conf
+screen -dmS snort snort -i eth0 -c /etc/snort/snort.conf -l /var/log/snort -d -A fast
+screen -dmS Telegram bash /home/admin/telegram/telegram.sh
 echo "Snort se ha configurado correctamente."
 sleep 2
 clear
 echo "-------------------------------"
 echo " "
-echo "Enhorabuena Has Instalado Docker + MariaDB + Docker Login + Docker Registro + Base de datos Importada + Sistema de Monitorizacion"
+echo "Enhorabuena Has Instalado Docker + MariaDB + Docker Login + Docker Registro + Base de datos Importada + Sistema de Monitorizacion + Snort + Bot de Telegram"
 echo " "
 echo "-------------------------------"
