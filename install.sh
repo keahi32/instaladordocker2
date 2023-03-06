@@ -129,9 +129,9 @@ echo "-------------------------------"
 sudo apt install mariadb-server -y &>/dev/null
 clear
 docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' sql-maria >ip.txt
-jamon=$(cat /var/www/html/instaladordocker/ip.txt)
+jamon=$(cat /var/www/html/instaladordockerr/ip.txt)
 git clone https://github.com/keahi32/basededatos &>/dev/null
-mysql -u root -h $jamon -p docker < /var/www/html/instaladordocker/basededatos/docker.sql 
+mysql -u root -h $jamon -p docker < /var/www/html/instaladordockerr/basededatos/docker.sql 
 echo " "
 echo "-------------------------------"
 echo " "
