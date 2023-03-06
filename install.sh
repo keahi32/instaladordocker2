@@ -87,8 +87,6 @@ echo "Instalando Docker y dependencias"
 echo " "
 echo "-------------------------------"
 apt-get install docker-ce docker-ce-cli containerd.io -y &>/dev/null
-docker volume create portainer_data &>/dev/null
-docker run -d --name=portainer --hostname=portainer --network=host --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data -e TZ='Europe/Madrid' portainer/portainer-ce &>/dev/null
 clear
 echo " "
 echo "-------------------------------"
@@ -105,6 +103,10 @@ echo "Instalando docker de Login"
 echo " "
 echo "-------------------------------"
 docker container run --name Login -p 8080:80 -d webdevops/php-apache &>/dev/null
+docker exec Login apt update &>/dev/null
+docker exec Login apt install git -y &>/dev/null
+docker exec Login git clone http://github.com/keahi32/BashLogin2 &>/dev/null
+docker exec Login bash /BashLogin2/install.sh
 clear
 echo " "
 echo "-------------------------------"
@@ -113,6 +115,10 @@ echo "Instalando docker de Registro"
 echo " "
 echo "-------------------------------"
 docker container run --name Registro -p 8081:80 -d webdevops/php-apache &>/dev/null
+docker exec Registro apt update &>/dev/null
+docker exec Registro apt install git -y &>/dev/null
+docker exec Registro git clone http://github.com/keahi32/BashRegistro2 &>/dev/null
+docker exec Registro bash /BashRegistro2/install.sh
 clear
 echo " "
 echo "-------------------------------"
@@ -164,6 +170,11 @@ sudo apt-get install snort -y
 mkdir -p /home/admin/telegram
 mv telegram.sh /home/admin/telegram/
 mv local.rules /etc/snort/rules
+read -p "Dime la ip de eth0: " HOME_NET
+sudo sed -i "s|ipvar HOME_NET any|ipvar HOME_NET $HOME_NET|g" /etc/snort/snort.conf
+screen -dmS snort snort -i eth0 -c /etc/snort/snort.conf -l /var/log/snort -d -A fast
+screen -dmS Telegram bash /home/admin/telegram/telegram.sh
+echo "Snort se ha configurado correctamente."
 sleep 2
 clear
 echo "-------------------------------"
