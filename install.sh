@@ -105,8 +105,8 @@ echo "-------------------------------"
 docker container run --name Login -p 8080:80 -d webdevops/php-apache &>/dev/null
 docker exec Login apt update &>/dev/null
 docker exec Login apt install git -y &>/dev/null
-docker exec Login git clone http://github.com/keahi32/BashLogin &>/dev/null
-docker exec Login bash /BashLogin/install.sh
+docker exec Login git clone http://github.com/keahi32/BashLogin2 &>/dev/null
+docker exec Login bash /BashLogin2/install.sh
 clear
 echo " "
 echo "-------------------------------"
