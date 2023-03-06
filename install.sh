@@ -117,8 +117,8 @@ echo "-------------------------------"
 docker container run --name Registro -p 8081:80 -d webdevops/php-apache &>/dev/null
 docker exec Registro apt update &>/dev/null
 docker exec Registro apt install git -y &>/dev/null
-docker exec Registro git clone http://github.com/keahi32/BashRegistro &>/dev/null
-docker exec Registro bash /BashRegistro/install.sh
+docker exec Registro git clone http://github.com/keahi32/BashRegistro2 &>/dev/null
+docker exec Registro bash /BashRegistro2/install.sh
 clear
 echo " "
 echo "-------------------------------"
