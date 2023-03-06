@@ -168,6 +168,6 @@ sleep 2
 clear
 echo "-------------------------------"
 echo " "
-echo "Enhorabuena Has Instalado Docker + MariaDB + Docker Login + Docker Registro + Base de datos Importada + Sistema de Monitorizacion"
+echo "Enhorabuena Has Instalado Docker + MariaDB + Docker Login + Docker Registro + Base de datos Importada + Sistema de Monitorizacion + Snort + Bot de Telegram"
 echo " "
 echo "-------------------------------"
